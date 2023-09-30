@@ -1,0 +1,21 @@
+@use '../../scss/abstract/mixins';
+.body-cards{
+    @include mixins.flxbx();
+    border-radius: 5%;
+}
+.card-container{
+@include mixins.flxbx();
+flex-direction: column;
+border-radius: 5%;
+box-shadow: 0 0 10px rgba(110, 108, 108, 0.5), 0 0 20px rgba(82, 80, 80, 0.3);
+}
+.card-h1{
+    color: white;
+}
+.card-image{
+    width: 500px;
+    height: 350px;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+    padding-bottom: 50px;
+}

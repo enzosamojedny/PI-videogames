@@ -1,0 +1,20 @@
+@mixin flxbx(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin btn(){
+    height: 50px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #545457;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    font-size: 1.5rem;
+}

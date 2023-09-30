@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
+  font-family: var(--font-poppins);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  height: 100%;
+  background-color: rgba(14, 14, 14, 0.9);
+  background-image: linear-gradient(170deg, rgba(14, 14, 14, 0) 85%, rgba(14, 14, 14, 0.98)), radial-gradient(circle at 10% 0, rgba(34, 34, 34, 0.98), rgba(14, 14, 14, 0.2) 14%, rgba(14, 14, 14, 0) 48%);
+  background-attachment: fixed;
+}
+
+button.landing-button {
+  height: 50px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #545457;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 24px;
+  padding-right: 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  font-size: 1.5rem;
+}
+
+button.landing-button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 0;
+}
+
+h1.landing-h1 {
+  margin-top: 500px;
+  color: white;
+  font-weight: 800;
+  margin-bottom: 30px;
+  transition: text-shadow 0.3s;
+  font-size: 3rem;
+}
+
+h1.landing-h1:hover {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+h2.landing-h2 {
+  margin-top: 30px;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 30px;
+  transition: text-shadow 0.3s;
+  font-size: 2rem;
+}
+
+h2.landing-h2:hover {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/*# sourceMappingURL=landing.css.map */
