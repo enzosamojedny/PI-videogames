@@ -4,7 +4,7 @@ const { Videogame, Genre } = require("../db");
 const getQuery = async (req, res) => {
   try {
     const { name } = req.query;
-    const limit = 1;
+    const limit = 15;
     const videogamesDb = await Videogame.findAll({
       where: { name },
       include: Genre,

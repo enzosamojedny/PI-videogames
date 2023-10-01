@@ -14,10 +14,10 @@ function Home() {
         let timeoutId;
         dispatch(getAllVideogames())
             .then(() => {
-                timeoutId = setTimeout(() => setLoading(false), 1000);
+                timeoutId = setTimeout(() => setLoading(false), 0);
             })
             .catch(() => {
-                timeoutId = setTimeout(() => setLoading(false), 1000);
+                timeoutId = setTimeout(() => setLoading(false), 0);
             });
 
         return () => clearTimeout(timeoutId);
