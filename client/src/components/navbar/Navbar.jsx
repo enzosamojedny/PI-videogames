@@ -11,10 +11,8 @@ function Navbar() {
     return (
         <div className="navbar-container">
             <button className='navbar-logo' onClick={handleButtonClick}><Logo /><p className='navbar-p'>RB</p></button>
-            <button className='navbar-btn'>UNO</button>
-            <button className='navbar-btn'>DOS</button>
-            <button className='navbar-btn'>TRES</button>
-            <button className='navbar-btn'>CUATRO</button>
+            <button className='navbar-btn'>Create Videogame</button>
+
             <SearchBar />
         </div>
     )

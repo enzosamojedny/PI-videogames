@@ -27,11 +27,11 @@ const getQuery = async (req, res) => {
           id: allVideogame.id,
           name: allVideogame.name,
           description: allVideogame?.description,
-          platforms: allVideogame.platforms,
+          platforms: allVideogame.platforms.map((plat) => plat.platform.name),
           background_image: allVideogame.background_image,
           released: allVideogame.released,
           rating: allVideogame.rating,
-          genres: allVideogame.genres,
+          genres: allVideogame.genres.map((genr) => genr.name),
         };
       }
     );
