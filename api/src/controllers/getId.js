@@ -35,6 +35,7 @@ const getId = async (req, res) => {
           background_image: data.background_image,
           released: data.released,
           rating: data.rating,
+          ratings_count: data.ratings_count,
           genres: data.genres.map((genr) => genr.name),
         };
 
