@@ -19,23 +19,17 @@ button {
   font-family: var(--font-poppins);
 }
 
-.navbar-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .navbar-container {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #333;
   display: flex;
   justify-content: space-between;
-  gap: 0px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.1);
   align-items: center;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.1);
+  margin-top: -100px;
 }
 
 .navbar-logo {
@@ -85,23 +79,12 @@ button .Logo canvas {
 .navbar-btn::after {
   content: "";
   position: absolute;
-  bottom: 0px; /* Adjust this value to move the border closer to the letters */
+  bottom: 0px;
   left: 0;
   right: 0;
-  border-bottom: 2px solid transparent; /* Transparent border initially */
+  border-bottom: 2px solid transparent;
   transition: border-color 0.3s ease-in-out;
 }
-
 .navbar-btn:hover::after {
-  border-bottom: 2px solid rgb(236, 236, 235); /* Change border color on hover */
-}
-
-.navbar-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.navbar-searchbar {
-  height: fit-content;
-  font-size: 2rem;
+  border-bottom: 2px solid rgb(236, 236, 235);
 }

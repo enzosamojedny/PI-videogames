@@ -3,10 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getAllVideogames } from '../../redux/actions.js'
 import CardListContainer from '../cards/CardListContainer.jsx'
 import Loader from "../loader/Loader";
-
-import './home.css'
 import Navbar from '../navbar/Navbar.jsx';
 import Footer from '../footer/Footer.jsx';
+import './home.css'
 function Home() {
     const dispatch = useDispatch()
     const videogames = useSelector((state) => state.videogames)
@@ -34,7 +33,6 @@ function Home() {
     return (
         <>
             <button style={{ backgroundColor: 'white', padding: '300' }}></button>
-
             <div className='home-container'>
                 {loading ? (
                     <Loader />
