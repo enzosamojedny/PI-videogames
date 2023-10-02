@@ -18,11 +18,11 @@ function SearchBar() {
             .finally(() => setLoading(false));
     }
     const handleSearchFocus = () => {
-        disableBodyScroll(); // Disable scroll when focusing on search
+        disableBodyScroll();
     };
 
     const handleSearchBlur = () => {
-        enableBodyScroll(); // Enable scroll when blurring from search
+        enableBodyScroll();
     };
 
     const disableBodyScroll = () => {

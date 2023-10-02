@@ -1,7 +1,9 @@
+body.card-detail{
+    background-color: black;
+}
 .detail-whole-container{
     display: flex;
     justify-content: center;
-    
 }
 .detail-container{
     box-shadow: 0 0 10px rgba(110, 108, 108, 0.5), 0 0 20px rgba(82, 80, 80, 0.3);
@@ -44,3 +46,17 @@
 .rating{
     color: white;
 }
+.genre-container{
+    display: flex;
+    flex-direction: row;
+  }
+  .genre-p{
+  color: white;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.9)
+  }
+  

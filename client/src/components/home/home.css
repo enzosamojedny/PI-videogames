@@ -8,5 +8,8 @@
   background-image: linear-gradient(170deg, rgba(14, 14, 14, 0) 85%, rgba(14, 14, 14, 0.98)), radial-gradient(circle at 10% 0, rgba(34, 34, 34, 0.98), rgba(14, 14, 14, 0.2) 14%, rgba(14, 14, 14, 0) 48%);
   background-attachment: fixed;
 }
+body.home-page{
+  background-color: black;
+}
 
 /*# sourceMappingURL=home.css.map */

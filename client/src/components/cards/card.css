@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 5%;
+  border-radius: 2%;
   box-shadow: 0 0 10px rgba(110, 108, 108, 0.5), 0 0 20px rgba(82, 80, 80, 0.3);
 }
 
@@ -17,5 +17,16 @@
   border-bottom-left-radius: 5%;
   border-bottom-right-radius: 5%;
 }
-
-/*# sourceMappingURL=card.css.map */
+.genre-container{
+  display: flex;
+  flex-direction: row;
+}
+.genre-p{
+color: white;
+margin-left: 10px;
+margin-top: 10px;
+margin-bottom: 10px;
+padding: 10px;
+font-size: 1.2rem;
+box-shadow: 0 2px 4px rgba(255, 255, 255, 0.7)
+}

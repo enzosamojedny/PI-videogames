@@ -1,5 +1,5 @@
 import React from 'react';
-import './ratingStars.css'; // Import the CSS file
+import './ratingStars.css';
 
 function RatingStars({ games }) {
     const { rating, ratings_count } = games;

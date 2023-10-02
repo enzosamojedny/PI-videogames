@@ -3,13 +3,19 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getAllVideogames } from '../../redux/actions.js'
 import CardListContainer from '../cards/CardListContainer.jsx'
 import Loader from "../loader/Loader";
+
 import './home.css'
 import Navbar from '../navbar/Navbar.jsx';
 function Home() {
     const dispatch = useDispatch()
     const videogames = useSelector((state) => state.videogames)
     const [loading, setLoading] = useState(true);
-
+    useEffect(() => {
+        document.body.classList.add('home-page');
+        return () => {
+            document.body.classList.remove('home-page');
+        };
+    }, []);
     useEffect(() => {
         let timeoutId;
         dispatch(getAllVideogames())

@@ -1,9 +1,15 @@
+import { useEffect } from 'react'
 import Navbar from '../navbar/Navbar'
 import RatingStars from '../ratingStars/RatingStars'
 import './cardDetail.css'
 
 function CardDetail({ props }) {
-    //eslint-disable-next-line
+    useEffect(() => {
+        document.body.classList.add('card-detail');
+        return () => {
+            document.body.classList.remove('card-detail');
+        };
+    }, []);
     const { name, genres, background_image, description, platforms, released, rating, ratings_count } = props
     return (
         <>
@@ -15,7 +21,11 @@ function CardDetail({ props }) {
                     <div className='description-container'>
                         <p className='detail-description'>{description}</p>
                     </div>
-                    {genres?.map((genre, index) => <p style={{ color: 'white', border: '1px solid white', display: 'flex', flexDirection: 'row' }} key={index}>{genre}</p>)}
+                    <div className='genre-container'>
+                        {genres?.map((genre, index) =>
+                            <p className='genre-p' key={index}>{genre}</p>
+                        )}
+                    </div>
                     <p className='released'>Release date: {released}</p>
                     <p className='rating'>{rating}</p>
                     <p className='ratings-count'>{ratings_count}</p>
