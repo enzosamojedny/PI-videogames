@@ -6,6 +6,7 @@ import Loader from "../loader/Loader";
 
 import './home.css'
 import Navbar from '../navbar/Navbar.jsx';
+import Footer from '../footer/Footer.jsx';
 function Home() {
     const dispatch = useDispatch()
     const videogames = useSelector((state) => state.videogames)
@@ -55,6 +56,7 @@ function Home() {
                                 </div>
                             );
                         })}
+                        <Footer />
                     </>
                 )}
             </div>
