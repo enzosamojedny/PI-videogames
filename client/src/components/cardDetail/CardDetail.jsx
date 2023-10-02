@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import Navbar from '../navbar/Navbar'
 import RatingStars from '../ratingStars/RatingStars'
 import './cardDetail.css'
+import Loader from '../loader/Loader' //? ADD LOADER TO DETAIL PAGE
 
 function CardDetail({ props }) {
     useEffect(() => {

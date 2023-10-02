@@ -51,14 +51,20 @@ export const getVideogameName = (name) => {
     }
   };
 };
-let id = 1;
 export const createVideogame = (videogame) => {
-  return {
-    type: CREATE_VIDEOGAME,
-    payload: {
-      ...videogame,
-      id: id++,
-    },
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/videogames",
+        videogame
+      );
+      dispatch({
+        type: CREATE_VIDEOGAME,
+        payload: { ...videogame, id: response.data.id },
+      });
+    } catch (error) {
+      console.error("se murio la action", error);
+    }
   };
 };
 

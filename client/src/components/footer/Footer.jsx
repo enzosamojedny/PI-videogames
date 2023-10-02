@@ -4,7 +4,9 @@ function Footer() {
     return (
         <div className='footer-whole-wrapper'>
             <div className='footer-wrapper'>
-                <p style={{ color: 'white' }}>FOOTER</p>
+                <div className='content-wrapper'>
+                    <p style={{ color: 'white' }}>FOOTER</p>
+                </div>
             </div>
         </div>
     )

@@ -2,7 +2,7 @@ import Logo from '../../components/logo/Logo'
 import SearchBar from './SearchBar';
 import React, { useState, useEffect } from 'react';
 import './navbar.css'
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function Navbar() {
     const navigate = useNavigate();
@@ -25,7 +25,7 @@ function Navbar() {
     return (
         <div className="navbar-container" style={{ opacity }}>
             <button className='navbar-logo' onClick={handleButtonClick}><Logo /><p className='navbar-p'>RB</p></button>
-            <button className='navbar-btn'>Create Videogame</button>
+            <NavLink to={'/createVideogame'}><button className='navbar-btn'>Create Videogame</button></NavLink>
             <SearchBar />
         </div>
     )
