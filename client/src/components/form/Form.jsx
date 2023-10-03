@@ -15,6 +15,7 @@ function Form() {
             document.body.classList.remove('create-page');
         };
     }, []);
+
     const [input, setInput] = useState({
         name: '',
         background_image: '',
@@ -33,6 +34,16 @@ function Form() {
         rating: '',
         genres: ''
     })
+
+ 
+
+
+
+
+
+
+
+
 
     const handleChange = (event) => {
         const value = event.target.value;

@@ -6,16 +6,22 @@ import Loader from "../loader/Loader";
 import Navbar from '../navbar/Navbar.jsx';
 import Footer from '../footer/Footer.jsx';
 import './home.css'
+import Pagination from '../pagination/Pagination.jsx';
 function Home() {
     const dispatch = useDispatch()
     const videogames = useSelector((state) => state.videogames)
     const [loading, setLoading] = useState(true);
+    const [gamesPerPage, setGamesPerPage] = useState(10)
+    const [currentPage, setCurrentPage] = useState(1)
+
+    const max = videogames.length / gamesPerPage
     useEffect(() => {
         document.body.classList.add('home-page');
         return () => {
             document.body.classList.remove('home-page');
         };
     }, []);
+
     useEffect(() => {
         let timeoutId;
         dispatch(getAllVideogames())
@@ -27,7 +33,6 @@ function Home() {
             });
 
         return () => clearTimeout(timeoutId);
-
     }, [])
 
     return (
@@ -39,7 +44,7 @@ function Home() {
                 ) : (
                     <>
                         <Navbar />
-                        {videogames?.map(({ id, name, background_image, genres, released, rating, ratings_count }) => {
+                        {videogames?.slice((currentPage - 1) * gamesPerPage, (currentPage - 1) * gamesPerPage + gamesPerPage).map(({ id, name, background_image, genres, released, rating, ratings_count }) => {
                             return (
                                 <div style={{ display: 'inline-flex', marginLeft: '75px', marginTop: '50px' }} key={id}>
                                     <CardListContainer
@@ -54,10 +59,13 @@ function Home() {
                                 </div>
                             );
                         })}
+                        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} max={max} />
                         <Footer />
                     </>
+
                 )}
             </div>
+
         </>
     );
 }
