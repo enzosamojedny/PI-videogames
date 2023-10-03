@@ -24,7 +24,6 @@ function Form() {
         rating: '',
         genres: []
     })
-    console.log(input)
     const handleChange = (event) => {
         const value = event.target.value;
         const name = event.target.name;
