@@ -4,11 +4,11 @@ import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
 import { useDispatch, useSelector } from 'react-redux'
 import { createVideogame } from '../../redux/actions'
+import validation from './helpers/validation'
 
 function Form() {
     const dispatch = useDispatch()
     const { videogames } = useSelector((state) => state)
-
     useEffect(() => {
         document.body.classList.add('create-page');
         return () => {
@@ -24,6 +24,16 @@ function Form() {
         rating: '',
         genres: []
     })
+    const [error, setError] = useState({
+        name: '',
+        background_image: '',
+        description: '',
+        platforms: '',
+        released: '',
+        rating: '',
+        genres: ''
+    })
+
     const handleChange = (event) => {
         const value = event.target.value;
         const name = event.target.name;
@@ -31,6 +41,7 @@ function Form() {
         if (event.target.type === 'checkbox') {
             if (event.target.checked) {
                 setInput(prev => ({ ...prev, [name]: [...prev[name], value] }));
+
             } else {
                 // If unchecked we remove it from the array
                 setInput(prev => ({ ...prev, [name]: prev[name].filter(item => item !== value) }));
@@ -38,6 +49,10 @@ function Form() {
         } else {
             setInput(prev => ({ ...prev, [name]: value }));
         }
+        setError(validation({
+            ...input,
+            [name]: value
+        }))
     }
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -50,7 +65,8 @@ function Form() {
                 <div className='form-wrapper' >
                     <label htmlFor="name"></label>
                     <input type="text" placeholder='Name' name='name' value={input.name} onChange={handleChange} className='form-input' />
-                    <p></p>
+                    {error.name && <p style={{ color: 'white' }}>{error.name}</p>}
+
                     <label htmlFor="background_image"></label>
                     <input type="url" placeholder='Image url' name='background_image' value={input.background_image} onChange={handleChange} className='form-input' />
                     <p></p>
