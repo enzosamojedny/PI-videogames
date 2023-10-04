@@ -49,6 +49,21 @@ export default function reducer(state = initialState, { type, payload }) {
           return videogame.genres.includes(payload);
         }
       });
+      // if (payload === "A") {
+      //   videogamesFilter.sort((a, b) => a.name.localeCompare(b.name));
+      // } else if (payload === "D") {
+      //   videogamesFilter.sort((a, b) => b.name.localeCompare(a.name));
+      // }
+
+      // if (payload === "A") {
+      //   videogamesFilter.sort(
+      //     (a, b) => parseFloat(b.rating) - parseFloat(a.rating)
+      //   );
+      // } else if (payload === "D") {
+      //   videogamesFilter.sort(
+      //     (a, b) => parseFloat(a.rating) - parseFloat(b.rating)
+      //   );
+      // }
       return {
         ...state,
         videogames: [...videogamesFilter],

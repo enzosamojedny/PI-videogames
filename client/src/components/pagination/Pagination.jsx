@@ -1,15 +1,11 @@
-import { useState } from "react";
 
 const currentPagetion = ({ currentPage, setCurrentPage, max }) => {
-    const [input, setInput] = useState(1);
 
     const nextPage = () => {
-        setInput(parseInt(input) + 1);
         setCurrentPage(parseInt(currentPage) + 1);
     };
 
     const backPage = () => {
-        setInput(parseInt(input) - 1);
         setCurrentPage(parseInt(currentPage) - 1);
     };
 
@@ -22,7 +18,7 @@ const currentPagetion = ({ currentPage, setCurrentPage, max }) => {
             >
                 {'<'}
             </button>
-            <p style={{ color: 'white', fontSize: '2rem', margin: '0px 5px 0px 5px' }}>{Math.ceil(currentPage)}</p>
+            <p style={{ color: 'white', fontSize: '2rem', margin: '0px 5px 0px 5px' }}>{Math.ceil(currentPage)} of {Math.ceil(max)}</p>
             <button
                 disabled={currentPage === Math.ceil(max) || currentPage > Math.ceil(max)}
                 onClick={nextPage}
