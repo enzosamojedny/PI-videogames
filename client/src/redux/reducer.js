@@ -6,6 +6,8 @@ import {
   RESET,
   CREATE_VIDEOGAME,
   VIDEOGAME_NAME,
+  VIDEOGAME_RATING,
+  CLEAR_DETAIL,
 } from "./action-types";
 
 const initialState = {
@@ -34,40 +36,66 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         videogameName: payload,
       };
-    case CREATE_VIDEOGAME: {
+    case CREATE_VIDEOGAME:
       return {
         ...state,
         videogames: [...state.videogames, payload],
       };
-    }
     case FILTER: {
-      const videogamesFilter = state.allVideogames.filter(
-        (videogame) => videogame.genres === payload
-      );
+      const videogamesFilter = state.allVideogames.filter((videogame) => {
+        if (payload === "default") {
+          return true;
+        } else {
+          return videogame.genres.includes(payload);
+        }
+      });
       return {
         ...state,
-        videogames: videogamesFilter,
+        videogames: [...videogamesFilter],
       };
     }
 
     case SORT: {
-      const videogamesOrder = [...state.videogames];
+      let videogameSort = [...state.allVideogames];
       if (payload === "A") {
-        videogamesOrder.sort((a, b) => a.id - b.id);
-      }
-      if (payload === "D") {
-        videogamesOrder.sort((a, b) => b.id - a.id);
+        videogameSort.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (payload === "D") {
+        videogameSort.sort((a, b) => b.name.localeCompare(a.name));
       }
       return {
         ...state,
-        videogames: videogamesOrder,
+        videogames: videogameSort,
+      };
+    }
+
+    case VIDEOGAME_RATING: {
+      let videogameRating = [...state.allVideogames];
+      if (payload === "A") {
+        videogameRating.sort(
+          (a, b) => parseFloat(b.rating) - parseFloat(a.rating)
+        );
+      }
+      if (payload === "D") {
+        videogameRating.sort(
+          (a, b) => parseFloat(a.rating) - parseFloat(b.rating)
+        );
+      }
+      return {
+        ...state,
+        videogames: videogameRating,
       };
     }
 
     case RESET: {
       return {
         ...state,
-        filter: state.videogames,
+        videogames: [...state.allVideogames],
+      };
+    }
+    case CLEAR_DETAIL: {
+      return {
+        ...state,
+        videogameDetail: {},
       };
     }
     default:

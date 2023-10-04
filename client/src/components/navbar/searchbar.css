@@ -1,6 +1,6 @@
 .navbar-wrapper {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.95);/*CAMBIAR ESTO PARA SACAR LA SOMBRA HORRIBLE*/
     width: calc(100% - 190px); 
     max-width: 392px; 
     display: flex;

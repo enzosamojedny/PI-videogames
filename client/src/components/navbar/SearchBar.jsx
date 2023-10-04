@@ -46,10 +46,10 @@ function SearchBar() {
             <div className='navbar-wrapper'>
                 {videogameName && (
                     <div className='navbar-item-container'>
-                        <ul className='searchbar-ul'>
-                            {videogameName.map((game) => (
-                                <div key={game.id} className='parent-container'>
-                                    <NavLink to={`/detail/${game.id}`}>
+                        {videogameName.map((game) => (
+                            <div key={game.id} className='parent-container'>
+                                <NavLink to={`/detail/${game.id}`}>
+                                    <ul className='searchbar-ul'>
                                         <li className='searchbar-li'>
                                             <hr style={{ marginTop: '10px', marginBottom: '10px' }} />
                                             <div className='game-wrapper'>
@@ -57,10 +57,11 @@ function SearchBar() {
                                                 <h5>{game.name}</h5>
                                             </div>
                                         </li>
-                                    </NavLink>
-                                </div>
-                            ))}
-                        </ul>
+                                    </ul>
+                                </NavLink>
+                            </div>
+                        ))}
+
                     </div>
                 )}
             </div>

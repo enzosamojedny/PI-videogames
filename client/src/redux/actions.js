@@ -6,6 +6,8 @@ import {
   CREATE_VIDEOGAME,
   VIDEOGAME_DETAIL,
   VIDEOGAME_NAME,
+  VIDEOGAME_RATING,
+  CLEAR_DETAIL,
 } from "./action-types";
 import axios from "axios";
 
@@ -75,9 +77,21 @@ export const filter = (genres) => {
   };
 };
 
-export const sort = (sort) => {
-  return { type: SORT, payload: sort };
+export const videogameSort = (sort) => {
+  return {
+    type: SORT,
+    payload: sort,
+  };
+};
+export const videogameRating = (rating) => {
+  return {
+    type: VIDEOGAME_RATING,
+    payload: rating,
+  };
 };
 export function reset() {
   return { type: RESET };
 }
+export const clearDetail = () => ({
+  type: CLEAR_DETAIL,
+});
