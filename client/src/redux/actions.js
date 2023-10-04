@@ -68,8 +68,11 @@ export const createVideogame = (videogame) => {
   };
 };
 
-export const filter = (videogame) => {
-  return { type: FILTER, payload: videogame };
+export const filter = (genres) => {
+  return {
+    type: FILTER,
+    payload: genres,
+  };
 };
 
 export const sort = (sort) => {

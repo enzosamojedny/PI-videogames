@@ -12,7 +12,7 @@ const initialState = {
   videogameName: [],
   videogames: [],
   videogameDetail: {},
-  filter: [],
+  allVideogames: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -21,6 +21,7 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         videogames: payload,
+        allVideogames: payload,
       };
 
     case VIDEOGAME_DETAIL:
@@ -40,8 +41,8 @@ export default function reducer(state = initialState, { type, payload }) {
       };
     }
     case FILTER: {
-      const videogamesFilter = state.videogames.filter(
-        (videogame) => videogame.gender === payload
+      const videogamesFilter = state.allVideogames.filter(
+        (videogame) => videogame.genres === payload
       );
       return {
         ...state,

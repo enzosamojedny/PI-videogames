@@ -1,6 +1,7 @@
 const axios = require("axios");
 const { Videogame, Genre } = require("../db");
 
+
 const getGame = async (_req, res) => {
   try {
     const limit = 40;

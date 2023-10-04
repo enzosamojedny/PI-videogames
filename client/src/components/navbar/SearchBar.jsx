@@ -4,6 +4,10 @@ import { useState } from 'react'
 import { getVideogameName } from '../../redux/actions.js'
 import './searchbar.css'
 import Loader from '../loader/Loader.jsx'
+
+
+
+
 function SearchBar() {
     const { name } = useParams()
     const dispatch = useDispatch()
@@ -32,35 +36,35 @@ function SearchBar() {
     const enableBodyScroll = () => {
         document.body.classList.remove('no-scroll');
     };
+
     return (
         <div>
             <form className='searchbar-container'>
                 <input type="search" className='navbar-searchbar' placeholder='Browse...' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} onFocus={handleSearchFocus} onBlur={handleSearchBlur} />
                 <button className='navbar-searchbar-btn' onClick={handleClick} type='submit'>Search</button>
             </form>
-            {loading ? (<Loader />) : (
-                <div className='navbar-wrapper'>
-                    {videogameName && (
-                        <div className='navbar-item-container'>
-                            <ul className='searchbar-ul'>
-                                {videogameName.map((game) => (
-                                    <div key={game.id} className='parent-container'>
-                                        <NavLink to={`/detail/${game.id}`}>
-                                            <li className='searchbar-li'>
-                                                <hr style={{ marginTop: '10px', marginBottom: '10px' }} />
-                                                <div className='game-wrapper'>
-                                                    <img src={game.background_image} style={{ width: '80px' }} alt='Game' />
-                                                    <h5>{game.name}</h5>
-                                                </div>
-                                            </li>
-                                        </NavLink>
-                                    </div>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-                </div>
-            )}
+            <div className='navbar-wrapper'>
+                {videogameName && (
+                    <div className='navbar-item-container'>
+                        <ul className='searchbar-ul'>
+                            {videogameName.map((game) => (
+                                <div key={game.id} className='parent-container'>
+                                    <NavLink to={`/detail/${game.id}`}>
+                                        <li className='searchbar-li'>
+                                            <hr style={{ marginTop: '10px', marginBottom: '10px' }} />
+                                            <div className='game-wrapper'>
+                                                <img src={game.background_image} style={{ width: '80px' }} alt='Game' />
+                                                <h5>{game.name}</h5>
+                                            </div>
+                                        </li>
+                                    </NavLink>
+                                </div>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+            </div>
+
         </div>
     )
 }

@@ -34,17 +34,6 @@ function Form() {
         rating: '',
         genres: ''
     })
-
- 
-
-
-
-
-
-
-
-
-
     const handleChange = (event) => {
         const value = event.target.value;
         const name = event.target.name;
@@ -52,9 +41,7 @@ function Form() {
         if (event.target.type === 'checkbox') {
             if (event.target.checked) {
                 setInput(prev => ({ ...prev, [name]: [...prev[name], value] }));
-
             } else {
-                // If unchecked we remove it from the array
                 setInput(prev => ({ ...prev, [name]: prev[name].filter(item => item !== value) }));
             }
         } else {
@@ -65,10 +52,39 @@ function Form() {
             [name]: value
         }))
     }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault()
+    //     dispatch(createVideogame(input))
+    // }
+
     const handleSubmit = (event) => {
         event.preventDefault()
-        dispatch(createVideogame(input))
+
+        if (isFormInvalid()) {
+            alert('Tu formulario está incompleto, por favor llena todos los campos');
+        } else {
+
+            dispatch(createVideogame(input))
+            alert('¡Tu formulario se envió con éxito!');
+
+            setInput({
+                name: '',
+                background_image: '',
+                description: '',
+                genres: '',
+                platforms: '',
+                rating: '',
+                released: ''
+            });
+        }
     }
+
+    const isFormInvalid = () => {
+        return Object.values(input).some((value) => value === '');
+    };
+
+
+
     return (
         <div>
             <div className='form-container'>
@@ -77,19 +93,18 @@ function Form() {
                     <label htmlFor="name"></label>
                     <input type="text" placeholder='Name' name='name' value={input.name} onChange={handleChange} className='form-input' />
                     {error.name && <p style={{ color: 'white' }}>{error.name}</p>}
-
                     <label htmlFor="background_image"></label>
                     <input type="url" placeholder='Image url' name='background_image' value={input.background_image} onChange={handleChange} className='form-input' />
-                    <p></p>
+                    {error.background_image && <p style={{ color: 'white' }}>{error.background_image}</p>}
                     <label htmlFor="description"></label>
                     <input type="text" placeholder='Description' name='description' value={input.description} onChange={handleChange} className='form-input' />
-                    <p></p>
+                    {error.description && <p style={{ color: 'white' }}>{error.description}</p>}
                     <label htmlFor="released"></label>
                     <input type="date" placeholder='released' name='released' value={input.released} onChange={handleChange} className='form-input' />
-                    <p></p>
+                    {error.released && <p style={{ color: 'white' }}>{error.released}</p>}
                     <label htmlFor="rating"></label>
                     <input type="text" placeholder='Rating' name='rating' value={input.rating} onChange={handleChange} className='form-input' />
-                    <p></p>
+                    {error.rating && <p style={{ color: 'white' }}>{error.rating}</p>}
                 </div>
                 <div className="checkbox-whole-container">
                     {[...new Set(videogames?.flatMap(game => game.genres))].map((genre, index) => (
@@ -112,14 +127,15 @@ function Form() {
                             <input
                                 type="checkbox"
                                 id={platform}
-                                name='platforms' // Fixed name 
-                                value={platform} // checkbox's value is its genre/platform
+                                name='platforms'
+                                value={platform}
                                 onChange={handleChange}
                                 checked={input.platforms.includes(platform)} // will keep checkbox checked if the genre/platform is in the input state
                             />
                             <label htmlFor={platform}>{platform}</label>
                         </div>
                     ))}
+                    {error.platforms && <p style={{ color: 'white' }}>{error.platforms}</p>}
                 </div>
                 <button type='submit' style={{ color: 'white', border: '1px solid white', padding: '10px' }} onClick={handleSubmit}>CREATE VIDEOGAME</button>
             </div>
