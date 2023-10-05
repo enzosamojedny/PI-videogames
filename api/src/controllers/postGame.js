@@ -11,7 +11,9 @@ const postGame = async (req, res) => {
       rating,
       genres,
     } = req.body;
-    const genderFromDB = await Genre.findAll({ where: { name: genres } });
+    console.log("genre", genres);
+    const genresFromDB = await Genre.findAll({ where: { name: genres } });
+
     const createVideogame = await Videogame.create({
       name,
       description,
@@ -20,7 +22,8 @@ const postGame = async (req, res) => {
       released,
       rating,
     });
-    await createVideogame.addGenres(genderFromDB);
+    await createVideogame.addGenres(genresFromDB);
+
     res.status(201).json(createVideogame);
   } catch (error) {
     res.status(404).json({ error: "Data missing to create a new videogame" });

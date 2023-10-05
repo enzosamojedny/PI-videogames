@@ -10,8 +10,9 @@ function CardDetailContainer() {
     const dispatch = useDispatch()
     const { videogameDetail } = useSelector((state) => state)
     const [loading, setLoading] = useState(true);
-    
+
     useEffect(() => {
+        let timeoutId;
         dispatch(getVideogameDetail(detailId))
             .then(() => {
                 timeoutId = setTimeout(() => setLoading(false), 1000);

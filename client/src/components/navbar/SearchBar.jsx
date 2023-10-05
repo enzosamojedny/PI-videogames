@@ -3,21 +3,15 @@ import { NavLink, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { getVideogameName } from '../../redux/actions.js'
 import './searchbar.css'
-import Loader from '../loader/Loader.jsx'
-
-
-
 
 function SearchBar() {
     const { name } = useParams()
     const dispatch = useDispatch()
     const { videogameName } = useSelector((state) => state)
     const [searchInput, setSearchInput] = useState(name || '');
-    const [loading, setLoading] = useState(true);
 
     const handleClick = (event) => {
         event.preventDefault()
-        setLoading(true)//FIX LOADER LOGIC
         dispatch(getVideogameName(searchInput))
             .finally(() => setLoading(false));
     }
@@ -36,7 +30,12 @@ function SearchBar() {
     const enableBodyScroll = () => {
         document.body.classList.remove('no-scroll');
     };
-
+    function shouldHideSearchBar() {
+        if (!videogameName) {
+            return searchContent.length === 0;
+        }
+        return false;
+    }
     return (
         <div>
             <form className='searchbar-container'>
@@ -49,15 +48,12 @@ function SearchBar() {
                         {videogameName.map((game) => (
                             <div key={game.id} className='parent-container'>
                                 <NavLink to={`/detail/${game.id}`}>
-                                    <ul className='searchbar-ul'>
-                                        <li className='searchbar-li'>
-                                            <hr style={{ marginTop: '10px', marginBottom: '10px' }} />
-                                            <div className='game-wrapper'>
-                                                <img src={game.background_image} style={{ width: '80px' }} alt='Game' />
-                                                <h5>{game.name}</h5>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    <div className={shouldHideSearchBar() ? 'searchbar-wrapper hidden' : 'searchbar-wrapper'}>
+                                        <div className='game-wrapper'>
+                                            <img src={game.background_image} style={{ width: '80px' }} alt='Game' />
+                                            <h5>{game.name}</h5>
+                                        </div>
+                                    </div>
                                 </NavLink>
                             </div>
                         ))}

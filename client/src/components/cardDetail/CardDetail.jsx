@@ -27,12 +27,19 @@ function CardDetail({ props }) {
                             <p className='genre-p' key={index}>{genre}</p>
                         )}
                     </div>
+                    <div>
+                        {platforms?.map((platform, index) => {
+                            return (
+                                <p key={index} style={{ color: 'white' }}>Platforms: {platform}</p>
+                            )
+                        })}
+                    </div>
                     <p className='released'>Release date: {released}</p>
                     <p className='rating'>{rating}</p>
                     <p className='ratings-count'>{ratings_count}</p>
                     <RatingStars games={props} />
                 </div>
-            </div>
+            </div >
         </>
     )
 }

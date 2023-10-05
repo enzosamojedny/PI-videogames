@@ -16,7 +16,7 @@ function Landing() {
                 <div className='container'>
                     <h1 className='landing-h1'>Browse games faster than ever</h1>
                     <h2 className='landing-h2'>Take control of Orb Interactive powerful engine to render every videogame you can wish</h2>
-                    <NavLink to={'/home'}><button className='landing-button'>Join us</button></NavLink>
+                    <NavLink to={'/home'}><button className='bn3'>Join us</button></NavLink>
                 </div>
             </div>
         </>
