@@ -1,66 +1,77 @@
-import React, { useEffect, useState } from 'react'
-import { filter, reset, videogameRating, videogameSort } from '../../redux/actions'
+import React, { useState } from 'react'
+import { updateFilter, reset } from '../../redux/actions'
 import { useDispatch } from 'react-redux'
 
 function Filter() {
     const dispatch = useDispatch()
-
+    const [rating, setRating] = useState('')
+    const [filter, setFilter] = useState('')
+    const [sort, setSort] = useState('')
+    const [idFilter, setIdFilter] = useState('')
     function handleSort(event) {
         const selectedSort = event.target.value;
-        if (selectedSort !== 'default') {
-            dispatch(videogameSort(selectedSort))
-        }
+        setSort(selectedSort)
+        dispatch(updateFilter({ filterType: 'sort', value: selectedSort }));
     }
-    function handleGenre() {
+
+    function handleGenre(event) {
         const selectedGenre = event.target.value;
-        dispatch(filter(selectedGenre));
-
+        setFilter(selectedGenre)
+        dispatch(updateFilter({ filterType: 'genre', value: selectedGenre }));
     }
 
-    function handleReset() {
+    function handleRating(event) {
+        const selectedRating = event.target.value;
+        setRating(selectedRating)
+        dispatch(updateFilter({ filterType: 'rating', value: event.target.value }));
+    }
+    function handleReset(event) {
         dispatch(reset(event.target.value))
     }
-    function handleRating(event) {
-        dispatch(videogameRating(event.target.value))
+    function handleIDFilter(event) {
+        const selectedID = event.target.value;
+        setIdFilter(selectedID)
+        dispatch(updateFilter({ filterType: 'source', value: selectedID }));
     }
     return (
         <div>
-            <select onChange={handleGenre} defaultValue="default">
-                <option value="default">Filter by genre</option>
-                <option value="Action" id="" name="" >Action</option>
-                <option value="RPG" id="" name="" >RPG</option>
-                <option value="Puzzle" id="" name="" >Puzzle</option>
-                <option value="Indie" id="" name="" >Indie</option>
-                <option value="Sports" id="" name="" >Sports</option>
-                <option value="Adventure" id="" name="" >Adventure</option>
-                <option value="Shooter" id="" name="" >Shooter</option>
-                <option value="Massively Multiplayer" id="" name="" >Massively Multiplayer</option>
-                <option value="Platformer" id="" name="" >Platformer</option>
-                <option value="Arcade" id="" name="" >Arcade</option>
-                <option value="Educational" id="" name="" >Educational</option>
-                <option value="Board Games" id="" name="" >Board Games</option>
-                <option value="Fighting" id="" name="" >Fighting</option>
-                <option value="Card" id="" name="" >Card</option>
-                <option value="Strategy" id="" name="" >Strategy</option>
-                <option value="Casual" id="" name="" >Casual</option>
-                <option value="Simulation" id="" name="" >Simulation</option>
-                <option value="Racing" id="" name="" >Racing</option>
-                <option value="Family" id="" name="" >Family</option>
+            <select onChange={handleGenre} value={filter}>
+                <option value="">Filter by genre</option>
+                <option value="Action" >Action</option>
+                <option value="RPG" >RPG</option>
+                <option value="Puzzle" >Puzzle</option>
+                <option value="Indie" >Indie</option>
+                <option value="Sports" >Sports</option>
+                <option value="Adventure" >Adventure</option>
+                <option value="Shooter" >Shooter</option>
+                <option value="Massively Multiplayer" >Massively Multiplayer</option>
+                <option value="Platformer" >Platformer</option>
+                <option value="Arcade" >Arcade</option>
+                <option value="Educational" >Educational</option>
+                <option value="Board Games" >Board Games</option>
+                <option value="Fighting" >Fighting</option>
+                <option value="Card" >Card</option>
+                <option value="Strategy" >Strategy</option>
+                <option value="Casual" >Casual</option>
+                <option value="Simulation" >Simulation</option>
+                <option value="Racing" >Racing</option>
+                <option value="Family" >Family</option>
             </select>
 
-            <select onChange={handleSort} >
-                {/* defaultValue="default" */}
-                <option disabled>Sort by name</option>
-                {/* value="default" */}
+            <select onChange={handleSort} value={sort}>
+                <option value=''>Sort by name</option>
+                <option value="AscSort">Ascending</option>
+                <option value="DescSort">Descending</option>
+            </select>
+            <select onChange={handleRating} value={rating}>
+                <option value=''>Sort by Rating</option>
                 <option value="A">Ascending</option>
                 <option value="D">Descending</option>
             </select>
-            <select onChange={handleRating}>
-                {/* defaultValue="default" */}
-                {/* value="default" */}
-                <option disabled>Sort by Rating</option>
-                <option value="A">Ascending</option>
-                <option value="D">Descending</option>
+            <select onChange={handleIDFilter} value={idFilter}>
+                <option value="">Filter by ID</option>
+                <option value="DB">DB</option>
+                <option value="API">API</option>
             </select>
             <button onClick={handleReset} style={{ border: '1px solid white', color: 'white', padding: '5px', fontSize: '1.5rem' }}>Reset</button>
         </div>

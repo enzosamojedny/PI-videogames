@@ -9,7 +9,6 @@ const getGenre = async (req, res) => {
         "https://api.rawg.io/api/genres?key=91fecabb447e4d87bd14d72b6901ca7c"
       );
       genreDb = await Genre.bulkCreate(apiResult.data.results);
-      console.log("bartolomiau", apiResult);
     }
     res.status(200).send(genreDb);
   } catch (error) {

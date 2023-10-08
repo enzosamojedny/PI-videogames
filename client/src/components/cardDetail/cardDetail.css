@@ -39,9 +39,14 @@ body.card-detail{
     margin-top: 20px;
     width:900px;
     font-size: 1.5rem;
+    cursor: pointer;
 }
-.detail-description{
+.detail-description{ /*p*/
     color: white;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
 }
 .genres{
     color: white;

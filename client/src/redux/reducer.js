@@ -1,12 +1,10 @@
 import {
   FILTER,
-  SORT,
   ALL_VIDEOGAMES,
   VIDEOGAME_DETAIL,
   RESET,
   CREATE_VIDEOGAME,
   VIDEOGAME_NAME,
-  VIDEOGAME_RATING,
   CLEAR_DETAIL,
 } from "./action-types";
 
@@ -15,6 +13,12 @@ const initialState = {
   videogames: [],
   videogameDetail: {},
   allVideogames: [],
+  filters: {
+    sort: "name",
+    genre: "",
+    rating: "",
+    source: "",
+  },
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -41,65 +45,56 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         videogames: [...state.videogames, payload],
       };
-    case FILTER: {
-      const videogamesFilter = state.allVideogames.filter((videogame) => {
-        if (payload === "default") {
-          return true;
-        } else {
-          return videogame.genres.includes(payload);
-        }
-      });
-      // if (payload === "A") {
-      //   videogamesFilter.sort((a, b) => a.name.localeCompare(b.name));
-      // } else if (payload === "D") {
-      //   videogamesFilter.sort((a, b) => b.name.localeCompare(a.name));
-      // }
+    case FILTER:
+      const { filterType, value } = payload;
+      let filters = { ...state.filters, [filterType]: value };
+      let filteredResult = [...state.allVideogames];
 
-      // if (payload === "A") {
-      //   videogamesFilter.sort(
-      //     (a, b) => parseFloat(b.rating) - parseFloat(a.rating)
-      //   );
-      // } else if (payload === "D") {
-      //   videogamesFilter.sort(
-      //     (a, b) => parseFloat(a.rating) - parseFloat(b.rating)
-      //   );
-      // }
-      return {
-        ...state,
-        videogames: [...videogamesFilter],
-      };
-    }
-
-    case SORT: {
-      let videogameSort = [...state.allVideogames];
-      if (payload === "A") {
-        videogameSort.sort((a, b) => a.name.localeCompare(b.name));
-      } else if (payload === "D") {
-        videogameSort.sort((a, b) => b.name.localeCompare(a.name));
+      if (filters.source === "API") {
+        filteredResult = filteredResult.filter(
+          (game) => typeof game.id === "number"
+        );
+      } else if (filters.source === "DB") {
+        filteredResult = filteredResult.filter(
+          (game) => typeof game.id === "string"
+        );
       }
-      return {
-        ...state,
-        videogames: videogameSort,
-      };
-    }
 
-    case VIDEOGAME_RATING: {
-      let videogameRating = [...state.allVideogames];
-      if (payload === "A") {
-        videogameRating.sort(
+      if (filterType === "sort") {
+        filters = { ...filters, rating: "" };
+      } else if (filterType === "rating") {
+        filters = { ...filters, sort: "name" };
+      }
+
+      if (filters.genre) {
+        filteredResult = filteredResult.filter((game) =>
+          game.genres.includes(filters.genre)
+        );
+      }
+
+      if (filters.sort === "AscSort") {
+        filteredResult.sort((a, b) => a.name.localeCompare(b.name));
+      }
+      if (filters.sort === "DescSort") {
+        filteredResult.sort((a, b) => b.name.localeCompare(a.name));
+      }
+
+      if (filters.rating === "A") {
+        filteredResult.sort(
           (a, b) => parseFloat(b.rating) - parseFloat(a.rating)
         );
       }
-      if (payload === "D") {
-        videogameRating.sort(
+      if (filters.rating === "D") {
+        filteredResult.sort(
           (a, b) => parseFloat(a.rating) - parseFloat(b.rating)
         );
       }
+
       return {
         ...state,
-        videogames: videogameRating,
+        videogames: filteredResult,
+        filters: filters,
       };
-    }
 
     case RESET: {
       return {

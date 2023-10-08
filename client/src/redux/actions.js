@@ -1,12 +1,10 @@
 import {
   FILTER,
-  SORT,
   RESET,
   ALL_VIDEOGAMES,
   CREATE_VIDEOGAME,
   VIDEOGAME_DETAIL,
   VIDEOGAME_NAME,
-  VIDEOGAME_RATING,
   CLEAR_DETAIL,
 } from "./action-types";
 import axios from "axios";
@@ -65,30 +63,18 @@ export const createVideogame = (videogame) => {
         payload: { ...videogame, id: response.data.id },
       });
     } catch (error) {
-      console.error("se murio la action", error);
+      console.error(error);
     }
   };
 };
 
-export const filter = (genres) => {
+export const updateFilter = (payload) => {
   return {
     type: FILTER,
-    payload: genres,
+    payload,
   };
 };
 
-export const videogameSort = (sort) => {
-  return {
-    type: SORT,
-    payload: sort,
-  };
-};
-export const videogameRating = (rating) => {
-  return {
-    type: VIDEOGAME_RATING,
-    payload: rating,
-  };
-};
 export function reset() {
   return { type: RESET };
 }

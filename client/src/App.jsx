@@ -10,9 +10,10 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path='*' element={<Error />} />
         <Route path='/' element={<Landing />} />
         <Route path='/home' element={<Home />} />
-        <Route path='*' element={<Error />} />
+
         <Route path='/detail/:detailId' element={<CardDetailContainer />} />
         <Route path='/createVideogame' element={<Form />} />
       </Routes>
