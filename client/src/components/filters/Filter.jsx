@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { updateFilter, reset } from '../../redux/actions'
 import { useDispatch } from 'react-redux'
-
+import './filter.css'
 function Filter() {
     const dispatch = useDispatch()
     const [rating, setRating] = useState('')
@@ -73,7 +73,7 @@ function Filter() {
                 <option value="DB">DB</option>
                 <option value="API">API</option>
             </select>
-            <button onClick={handleReset} style={{ border: '1px solid white', color: 'white', padding: '5px', fontSize: '1.5rem' }}>Reset</button>
+            <button onClick={handleReset} className='bn3'>Reset</button>
         </div>
     )
 }

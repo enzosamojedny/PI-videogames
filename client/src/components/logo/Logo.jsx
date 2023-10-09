@@ -31,9 +31,13 @@ function Logo() {
         };
 
         const rus = () => {
+            ctx.globalCompositeOperation = "source-over";
+            ctx.fillStyle = "rgba(0,0,0,0.03)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.globalCompositeOperation = "lighter";
             ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas each frame
 
-            var tim = count / 10;
+            var tim = count / 7;
 
             for (var e = 0; e < 3; e++) {
                 tim *= 1.7;
@@ -61,7 +65,7 @@ function Logo() {
                     p2.push([x, y, z]);
                 }
 
-                s *= 35; // Adjust size as needed
+                s *= 34; // Adjust size as needed
 
                 for (var d = 0; d < 3; d++) {
                     for (let a = 0; a < MAX; a++) {

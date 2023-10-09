@@ -19,8 +19,8 @@ function RatingStars({ games }) {
 
     const stars = [];
     for (let i = 0; i < 5; i++) {
-        const starValue = i - 0.5;
-        const filledStar = rating >= starValue;
+        const starValue = i + 1;
+        const filledStar = starValue <= Math.round(rating);
         stars.push(
             <span key={starValue} className={filledStar ? 'star filled' : 'star empty'}>
                 ★
@@ -31,7 +31,7 @@ function RatingStars({ games }) {
     return (
         <div>
             <div className="stars">{stars}</div>
-            <div className="rating-label">{labels[rating]}</div>
+            <div className="rating-label">{labels[Math.floor(rating)]}</div>
             <div className="ratings-count">{ratings_count} votes</div>
         </div>
     );
