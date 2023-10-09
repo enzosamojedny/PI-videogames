@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import './style.css'
+
 function Logo() {
     const MAX = 50;
     let canvas, ctx;

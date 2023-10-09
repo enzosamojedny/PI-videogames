@@ -52,10 +52,6 @@ function Form() {
             [name]: value
         }))
     }
-    // const handleSubmit = (event) => {
-    //     event.preventDefault()
-    //     dispatch(createVideogame(input))
-    // }
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -137,7 +133,7 @@ function Form() {
                     ))}
                     {error.platforms && <p style={{ color: 'white' }}>{error.platforms}</p>}
                 </div>
-                <button type='submit' style={{ color: 'white', border: '1px solid white', padding: '10px' }} onClick={handleSubmit}>CREATE VIDEOGAME</button>
+                <button type='submit' className='bn3' onClick={handleSubmit}>CREATE VIDEOGAME</button>
             </div>
             <Footer />
         </div>

@@ -11,7 +11,7 @@ function Card({ games }) {
                         <img src={games.background_image} className='card-image' alt={games.name}></img>
                         <div className='genre-container'>
                             {games.genres.map((genre, index) =>
-                                <p className='genre-p' key={index}>{genre}</p>
+                                <p className='genre-p' style={{ fontSize: '0.9rem', padding: '3px' }} key={index}>{genre}</p>
                             )}
                         </div>
                     </div>

@@ -53,6 +53,7 @@
   .bn3:hover {
     color: black;
     background-color: rgb(255, 255, 255);
+    font-weight: 600;
   }
   .navbar-searchbar {
     font-size: 1.5rem;

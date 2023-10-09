@@ -1,14 +1,20 @@
+import { useEffect } from "react";
 
-const currentPagetion = ({ currentPage, setCurrentPage, max }) => {
+
+const currentPagination = ({ currentPage, setCurrentPage, max }) => {
 
     const nextPage = () => {
-        setCurrentPage(parseInt(currentPage) + 1);
+        setCurrentPage(parseInt(currentPage) + 1);//aumenta 1 a la pag cuando vas para adelante
     };
 
     const backPage = () => {
-        setCurrentPage(parseInt(currentPage) - 1);
+        setCurrentPage(parseInt(currentPage) - 1);//resta 1 a la pag cuando vas para atras
     };
-
+    useEffect(() => {
+        if (currentPage > Math.ceil(max)) {
+            setCurrentPage(1);
+        }
+    }, [max]);
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <button
@@ -30,4 +36,4 @@ const currentPagetion = ({ currentPage, setCurrentPage, max }) => {
     );
 };
 
-export default currentPagetion;
+export default currentPagination;
