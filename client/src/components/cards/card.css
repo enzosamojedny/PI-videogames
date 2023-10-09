@@ -6,16 +6,32 @@
   border-radius: 2%;
   box-shadow: 0 0 10px rgba(110, 108, 108, 0.5), 0 0 20px rgba(82, 80, 80, 0.3);
 }
-.card-container:hover{
-  box-shadow: 0 0 10px rgba(110, 108, 108, 0.5), 0 0 20px rgba(255, 255, 255, 0.9);
+@keyframes shadow-pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(110, 108, 108, 0.5), 0 0 20px rgba(255, 255, 255, 0.9);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(110, 108, 108, 0.7), 0 0 25px rgba(255, 255, 255, 1);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(110, 108, 108, 0.5), 0 0 20px rgba(255, 255, 255, 0.9);
+  }
 }
+
+.card-container:hover {
+  animation: shadow-pulse 2s infinite alternate;
+}
+
+/* .card-container:hover{
+  box-shadow: 0 0 10px rgba(110, 108, 108, 0.5), 0 0 20px rgba(255, 255, 255, 0.9);
+} */
 .card-h1 {
   color: white;
 }
 
 .card-image {
-  width: 500px;
-  height: 350px;
+  width: 350px;
+  height: 300px;
   border-bottom-left-radius: 5%;
   border-bottom-right-radius: 5%;
 }

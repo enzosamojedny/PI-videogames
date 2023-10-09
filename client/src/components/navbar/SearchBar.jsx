@@ -40,7 +40,7 @@ function SearchBar() {
         <div>
             <form className='searchbar-container'>
                 <input type="search" className='navbar-searchbar' placeholder='Browse...' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} onFocus={handleSearchFocus} onBlur={handleSearchBlur} />
-                <button className='navbar-searchbar-btn' onClick={handleClick} type='submit'>Search</button>
+                <button className='bn3' onClick={handleClick} type='submit'>Search</button>
             </form>
             <div className='navbar-wrapper'>
                 {videogameName && (

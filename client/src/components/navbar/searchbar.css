@@ -1,6 +1,6 @@
 .navbar-wrapper {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.95);/*CAMBIAR ESTO PARA SACAR LA SOMBRA HORRIBLE*/
+    background-color: rgba(0, 0, 0, 0.95);
     width: max-content;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,6 @@
     display: flex;
     flex-direction: column; 
     overflow-y: auto; 
-    max-height: 400px;
     margin-top: 10px;
     scroll-behavior: smooth;
     width: 100%; 
@@ -35,15 +34,40 @@
     flex-direction: row;
     align-items: center;
 }
-.navbar-searchbar-btn {
-    color: white;
-    border: 1px solid white;
-    height: fit-content;
-    width: 90px;
-    height: 50px;
-    margin-right: 50px;
+.bn3 {
+    display: inline-block;
+    padding: 0.5em 1.7em;
+    margin: 0 0.1em 0.1em 0;
+    border: 0.16em solid rgb(255, 255, 255);
+    border-radius: 0.5em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    color: #ffffff;
+    text-shadow: 0 0.04em 0.04em rgba(255, 255, 255, 0.253);
+    text-align: center;
+    transition: all 0.2s;
+  }
+  
+  .bn3:hover {
+    color: black;
+    background-color: rgb(255, 255, 255);
   }
   .navbar-searchbar {
-    height: fit-content;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    position: relative; /* Ensure position is relative for absolute positioning */
   }
+  
+  .navbar-searchbar::placeholder {
+    color: #131212; /* Placeholder color */
+  }
+  
+  .navbar-searchbar:hover::placeholder {
+    color: #131212; /* Change to the color you want on hover */
+  }
+  
+  .navbar-searchbar:hover {
+    background-color: rgba(245, 237, 237, 0.9);
+  }
+  

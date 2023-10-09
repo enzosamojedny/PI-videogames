@@ -8,6 +8,17 @@ body.card-detail{
     justify-content: center;
     background-attachment: fixed;
 }
+@keyframes alternate-shadow-pulse {
+    0% {
+      box-shadow: 0 0 10px rgba(110, 108, 108, 0.5), 0 0 20px rgba(82, 80, 80, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 15px rgba(110, 108, 108, 0.7), 0 0 25px rgba(82, 80, 80, 0.5);
+    }
+    100% {
+      box-shadow: 0 0 10px rgba(110, 108, 108, 0.5), 0 0 20px rgba(82, 80, 80, 0.3);
+    }
+  }
 .detail-container{
     box-shadow: 0 0 10px rgba(110, 108, 108, 0.5), 0 0 20px rgba(82, 80, 80, 0.3);
     width: fit-content;
@@ -18,6 +29,7 @@ body.card-detail{
     margin-top: 150px;
     border-radius: 2%;
     background-color: black ;
+    animation: alternate-shadow-pulse 3s infinite alternate;
 }
 .detail-image{
     width:950px;

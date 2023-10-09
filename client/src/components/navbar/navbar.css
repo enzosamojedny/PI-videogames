@@ -23,13 +23,14 @@ button {
   position: sticky;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 208vh;
   background-color: #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.1);
-  margin-top: -100px;
+  margin-top: -120px;
+  height: 87px;
 }
 
 .navbar-logo {
@@ -45,7 +46,7 @@ button {
 
 .navbar-p {
   margin-top: 5px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-right: 50px;
   color: rgb(255, 255, 255);
 }
@@ -71,7 +72,7 @@ button .Logo canvas {
 }
 
 .navbar-btn {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   color: white;
   position: relative;
 }

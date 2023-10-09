@@ -13,6 +13,7 @@ function CardDetailContainer() {
 
     useEffect(() => {
         let timeoutId;
+        dispatch(clearDetail())
         dispatch(getVideogameDetail(detailId))
             .then(() => {
                 timeoutId = setTimeout(() => setLoading(false), 1000);
@@ -21,10 +22,7 @@ function CardDetailContainer() {
                 timeoutId = setTimeout(() => setLoading(false), 1000);
             });
     }, [])
-    useEffect(() => {
-        dispatch(clearDetail())
 
-    }, [])
     return (
         <div>
             <CardDetail props={videogameDetail} loading={loading} />
