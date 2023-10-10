@@ -151,10 +151,9 @@ function Form() {
                 <CustomPopup
                     onClose={popupCloseHandler}
                     show={visibility}
-                    title="Hello Jeetendra"
+                    title="Your videogame has been created"
                 >
-                    <h1>Your videogame has been created</h1>
-                    <h3>You're free to go <NavLink to={'/'}>back</NavLink></h3>
+                    <h3>Click to go <NavLink to={'/home'}>back</NavLink></h3>
                 </CustomPopup>
             </div>
             <Footer />
