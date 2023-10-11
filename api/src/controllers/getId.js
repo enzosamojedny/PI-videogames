@@ -76,7 +76,6 @@ const getId = async (req, res) => {
 
           return res.status(200).json(gameData);
         }
-        console.log(gameFromDb);
         if (!gameFromDb) {
           return res
             .status(404)

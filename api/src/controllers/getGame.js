@@ -3,8 +3,9 @@ const { Videogame, Genre } = require("../db");
 
 const getGame = async (_req, res) => {
   try {
-    const limit = 33;
-
+    const limitFirstPage = 33;
+    const limitSecondPage = 33;
+    const limitThirdPage = 34;
     const [
       videogamesDb,
       videogamesApiFirstPage,
@@ -23,13 +24,13 @@ const getGame = async (_req, res) => {
         },
       }),
       axios.get(
-        `https://api.rawg.io/api/games?key=91fecabb447e4d87bd14d72b6901ca7c&page_size=${limit}`
+        `https://api.rawg.io/api/games?key=91fecabb447e4d87bd14d72b6901ca7c&page_size=${limitFirstPage}`
       ),
       axios.get(
-        `https://api.rawg.io/api/games?key=91fecabb447e4d87bd14d72b6901ca7c&page=2&page_size=${limit}`
+        `https://api.rawg.io/api/games?key=91fecabb447e4d87bd14d72b6901ca7c&page=2&page_size=${limitSecondPage}`
       ),
       axios.get(
-        `https://api.rawg.io/api/games?key=91fecabb447e4d87bd14d72b6901ca7c&page=3&page_size=${limit}`
+        `https://api.rawg.io/api/games?key=91fecabb447e4d87bd14d72b6901ca7c&page=3&page_size=${limitThirdPage}`
       ),
     ]);
     const dbGenres = videogamesDb.map((game) => ({

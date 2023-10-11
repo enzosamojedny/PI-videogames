@@ -9,26 +9,28 @@ function SearchBar() {
     const dispatch = useDispatch()
     const { videogameName } = useSelector((state) => state)
     const [searchInput, setSearchInput] = useState(name || '');
+    const [inputFocused, setInputFocused] = useState(false);
 
     const handleClick = (event) => {
         event.preventDefault()
         dispatch(getVideogameName(searchInput))
-            .finally(() => setLoading(false));
     }
     const handleSearchFocus = () => {
-        disableBodyScroll();
+        setInputFocused(true);
     };
 
     const handleSearchBlur = () => {
         enableBodyScroll();
+        setInputFocused(false);
     };
 
+
     const disableBodyScroll = () => {
-        document.body.classList.add('no-scroll');
+        document.body.style.overflow = 'hidden';
     };
 
     const enableBodyScroll = () => {
-        document.body.classList.remove('no-scroll');
+        document.body.style.overflow = 'auto';
     };
     function shouldHideSearchBar() {
         if (!videogameName) {
@@ -46,12 +48,12 @@ function SearchBar() {
                 {videogameName && (
                     <div className='navbar-item-container'>
                         {videogameName.map((game) => (
-                            <div key={game.id} className='parent-container'>
+                            <div key={game.id} className={inputFocused ? 'searchbar-wrapper parent-container' : 'searchbar-wrapper hidden parent-container'}>
                                 <NavLink to={`/detail/${game.id}`}>
                                     <div className={shouldHideSearchBar() ? 'searchbar-wrapper hidden' : 'searchbar-wrapper'}>
                                         <div className='game-wrapper'>
                                             <img src={game.background_image} style={{ width: '80px' }} alt='Game' />
-                                            <h5>{game.name}</h5>
+                                            <h5 className='game-titles'>{game.name}</h5>
                                         </div>
                                     </div>
                                 </NavLink>
