@@ -32,6 +32,9 @@ function validation(error) {
   if (!error.platforms) {
     errors.platforms = "Select at least 1 platform ";
   }
+  if (!error.genres) {
+    errors.genres = "Select at least 1 Genre ";
+  }
   return errors;
 }
 

@@ -127,8 +127,10 @@ function Form() {
                                 checked={input.genres.includes(genre)}
                             />
                             <label htmlFor={genre}>{genre}</label>
+
                         </div>
                     ))}
+                    {error.genres && <p style={{ color: 'white' }}>{error.genres}</p>}
                 </div>
                 <div className="checkbox-whole-container">
                     {[...new Set(videogames?.flatMap(game => game.platforms))].map((platform, index) => (
@@ -146,7 +148,7 @@ function Form() {
                     ))}
                     {error.platforms && <p style={{ color: 'white' }}>{error.platforms}</p>}
                 </div>
-                <button type='submit' className='bn3' onClick={(e) => { handleSubmit(e); setVisibility(!visibility); }}>CREATE VIDEOGAME AND TOGGLE POPUP</button>
+                <button type='submit' className='bn3' onClick={(e) => { handleSubmit(e); setVisibility(!visibility); }}>CREATE VIDEOGAME</button>
 
                 <CustomPopup
                     onClose={popupCloseHandler}
